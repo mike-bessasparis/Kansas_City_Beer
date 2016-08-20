@@ -110,15 +110,6 @@ public class BreweryListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if (1 == 2) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(BreweryDetailFragment.ARG_OBJ, "need index");
-                        BreweryDetailFragment fragment = new BreweryDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.brewery_detail_container, fragment)
-                                .commit();
-                    } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, BreweryDetailActivity.class);
 
@@ -129,8 +120,6 @@ public class BreweryListActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-                    }
                 }
             });
         }
