@@ -28,6 +28,7 @@ import java.io.InputStream;
  */
 public class BreweryListActivity extends AppCompatActivity {
 
+    public static final String ARG_OBJ = "json-obj-string";
     public String jsonString;
     public JSONObject jsonObj;
     public JSONArray breweryArray;
@@ -106,6 +107,7 @@ public class BreweryListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            //on a click send the detail activity the brewery JSON object
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -114,7 +116,7 @@ public class BreweryListActivity extends AppCompatActivity {
                         Intent intent = new Intent(context, BreweryDetailActivity.class);
 
                         try {
-                            intent.putExtra(BreweryDetailFragment.ARG_OBJ,
+                            intent.putExtra(ARG_OBJ,
                                     breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
                             context.startActivity(intent);
                         } catch (Exception e) {
