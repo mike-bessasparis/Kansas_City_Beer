@@ -35,12 +35,6 @@ public class BreweryListActivity extends AppCompatActivity {
     public int numberOfBreweries = 0;
     private String breweries_file = "breweries.json";
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
-    private boolean mTwoPane;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,33 +42,11 @@ public class BreweryListActivity extends AppCompatActivity {
 
         setupJsonObject();
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setTitle(getTitle());
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-
         View breweriesListView = findViewById(R.id.brewery_list);
         assert breweriesListView != null;
 
-
         setupRecyclerView((RecyclerView) breweriesListView);
 
-        if (findViewById(R.id.brewery_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
-            mTwoPane = true;
-        }
     }
 
     private void setupJsonObject() {
@@ -137,29 +109,19 @@ public class BreweryListActivity extends AppCompatActivity {
             }
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
 
-                    if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(BreweryDetailFragment.ARG_OBJ, "need index");
-                        BreweryDetailFragment fragment = new BreweryDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.brewery_detail_container, fragment)
-                                .commit();
-                    } else {
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, BreweryDetailActivity.class);
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, BreweryDetailActivity.class);
 
-                        try {
-                            intent.putExtra(BreweryDetailFragment.ARG_OBJ,
-                                    breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
-                            context.startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
+                    try {
+                        intent.putExtra(BreweryDetailFragment.ARG_OBJ,
+                                breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
+                        context.startActivity(intent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
             });
