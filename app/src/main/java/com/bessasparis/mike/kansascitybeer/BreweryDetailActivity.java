@@ -51,10 +51,17 @@ public class BreweryDetailActivity extends AppCompatActivity {
         return breweryAddress;
     }
 
+    //on a click send the map activity the brewery JSON object as a string
     public void mapButtonClicked(View v) {
 
         Intent intent = new Intent(this, BreweryMapActivity.class);
-//        intent.putExtra(EXTRA_MESSAGE, message);
+
+        try {
+            intent.putExtra(ARG_OBJ, bObj.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         startActivity(intent);
 
     }
