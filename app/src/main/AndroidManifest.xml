@@ -30,10 +30,6 @@
                 android:value="com.bessasparis.mike.kansascitybeer.BreweryListActivity"/>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCPNzHNOMi5pAxd1XJf8b9AN3C2YDa9Gfg"/>
-
     </application>
 
 </manifest>
