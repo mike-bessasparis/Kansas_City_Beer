@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -17,15 +18,7 @@ public class BreweryDetailActivity extends AppCompatActivity {
     public static final String ARG_OBJ = "json-obj-string";
     public JSONObject bObj;
 
-//    @Override
-//    public void onMapReady(GoogleMap mMap) {
-//        mMap.addMarker(new MarkerOptions().position(new LatLng(39.351410, -94.915102))
-//                .title("CAC HQ and G6"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-//                new LatLng(39.351410, -94.915102), 16));
-//        mMap.setMyLocationEnabled(true);
-//
-//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +49,14 @@ public class BreweryDetailActivity extends AppCompatActivity {
         String breweryAddress;
         breweryAddress = mObj.getString("address");
         return breweryAddress;
+    }
+
+    public void mapButtonClicked(View v) {
+
+        Intent intent = new Intent(this, BreweryMapActivity.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
     }
 
     @Override
