@@ -107,7 +107,7 @@ public class BreweryListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            //on a click send the detail activity the brewery JSON object
+            //on a click send the detail activity the brewery JSON object as a string
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
