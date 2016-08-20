@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,6 @@ public class BreweryListActivity extends AppCompatActivity {
 
     private void setupJsonObject() {
         try {
-            Log.i("mjb", "load json try");
             jsonString = loadJSONFromAsset();
             jsonObj = new JSONObject(jsonString);
             breweryArray = jsonObj.getJSONArray("breweries");
@@ -109,19 +107,29 @@ public class BreweryListActivity extends AppCompatActivity {
             }
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
 
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, BreweryDetailActivity.class);
+                    if (1 == 2) {
+                        Bundle arguments = new Bundle();
+                        arguments.putString(BreweryDetailFragment.ARG_OBJ, "need index");
+                        BreweryDetailFragment fragment = new BreweryDetailFragment();
+                        fragment.setArguments(arguments);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.brewery_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, BreweryDetailActivity.class);
 
-                    try {
-                        intent.putExtra(BreweryDetailFragment.ARG_OBJ,
-                                breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
-                        context.startActivity(intent);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        try {
+                            intent.putExtra(BreweryDetailFragment.ARG_OBJ,
+                                    breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
+                            context.startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
             });
