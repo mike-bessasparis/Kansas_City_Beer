@@ -29,15 +29,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bessasparis.mike.kansascitybeer.BreweryListActivity"/>
         </activity>
-        <activity
-            android:name=".BreweryMapActivity"
-            android:label="@string/app_name"
-            android:parentActivityName=".BreweryDetailActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.bessasparis.mike.kansascitybeer.BreweryDetailActivity"/>
-        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
