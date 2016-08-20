@@ -1,6 +1,7 @@
 package com.bessasparis.mike.kansascitybeer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -36,11 +37,6 @@ public class BreweryDetailActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        MapFragment mapFragment = (MapFragment) getFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-
     }
 
     // receives a string representing the JSON object of the brewery
@@ -54,16 +50,13 @@ public class BreweryDetailActivity extends AppCompatActivity {
     //on a click send the map activity the brewery JSON object as a string
     public void mapButtonClicked(View v) {
 
-        Intent intent = new Intent(this, BreweryMapActivity.class);
-
         try {
-            intent.putExtra(ARG_OBJ, bObj.toString());
+            Intent searchAddress = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:0,0?q=" + getBreweryAddress(bObj)));
+            startActivity(searchAddress);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        startActivity(intent);
-
     }
 
     @Override
