@@ -1,0 +1,108 @@
+{
+  "breweries": [
+    {
+      "name": "Amerisports",
+      "address": "3200 North Ameristar Drive"
+    },
+    {
+      "name": "Big Rip Brewing",
+      "address": "216 East Ninth Avenue"
+    },
+    {
+      "name": "Blind Tiger Brewery",
+      "address": "417 Southwest 37th Street, Topeka"
+    },
+    {
+      "name": "Border Brewing",
+      "address": "406 East 18th Street"
+    },
+    {
+      "name": "Boulevard Brewing",
+      "address": "2534 Madison Street"
+    },
+    {
+      "name": "Brewery Emperial",
+      "address": "1829 Oak Street"
+    },
+    {
+      "name": "Calibration Brewery",
+      "address": "119 Armour Road, North Kansas City"
+    },
+    {
+      "name": "Cinder Block Brewery",
+      "address": "110 East 18th Avenue, North Kansas City"
+    },
+    {
+      "name": "Crane Brewing",
+      "address": "6515 Railroad, Raytown"
+    },
+    {
+      "name": "Double Shift Brewing",
+      "address": "412 East 18th Street"
+    },
+    {
+      "name": "Free State Brewing",
+      "address": "636 Massachusetts, Lawrence"
+    },
+    {
+      "name": "Green Room Burgers and Beer",
+      "address": "4010 Pennsylvania"
+    },
+    {
+      "name": "KC Bier",
+      "address": "310 West 79th Street"
+    },
+    {
+      "name": "Martin City Brewing",
+      "address": "410 East 135th Street"
+    },
+    {
+      "name": "McCoy's Public House",
+      "address": "4057 Pennsylvania"
+    },
+    {
+      "name": "Red Crow Brewing",
+      "address": "20561 South Lone Elm Road, Spring Hill"
+    },
+    {
+      "name": "Rock and Run Brewery",
+      "address": "114 East Kansas Street, Liberty"
+    },
+    {
+      "name": "Stockyards Brewing",
+      "address": "1600 Genesee"
+    },
+    {
+      "name": "Tallgrass Brewing",
+      "address": "5960 Dry Hop Circle, Manhatten"
+    },
+    {
+      "name": "Torn Label Brewing",
+      "address": "1708 Campbell"
+    },
+    {
+      "name": "23rd Street Brewery",
+      "address": "3512 Clinton Parkway, Lawrence"
+    },
+    {
+      "name": "Weston Brewing",
+      "address": "500 Welt Street, Weston"
+    },
+    {
+      "name": "Brew Lab",
+      "address": "8004 Foster Street, Overland Park"
+    },
+    {
+      "name": "Colony Espresso and Beer",
+      "address": "312 Armour Road, North Kansas City"
+    },
+    {
+      "name": "Loose Cannon Brewing",
+      "address": "Coming Soon"
+    },
+    {
+      "name": "Strange Days Brewing",
+      "address": "Coming Soon"
+    }
+  ]
+}
