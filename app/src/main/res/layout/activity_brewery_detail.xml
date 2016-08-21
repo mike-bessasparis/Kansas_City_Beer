@@ -10,11 +10,20 @@
         android:layout_height="wrap_content"
         android:padding="16dp"/>
 
+    <!--Stars rating-->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
     <Button
         android:id="@+id/btn_map_it"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:onClick="mapButtonClicked"
         android:text="Map It"/>
+
 
 </LinearLayout>
