@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,17 +20,20 @@ import org.json.JSONObject;
 /**
  * An activity representing a single Brewery detail screen.
  */
-public class BreweryDetailActivity extends AppCompatActivity {
+public class BreweryDetailActivity extends AppCompatActivity implements RatingBar.OnRatingBarChangeListener {
 
     public static final String ARG_OBJ = "json-obj-string";
     public JSONObject bObj;
-
+    public RatingBar ratingBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brewery_detail);
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingBar.setOnRatingBarChangeListener(this);
 
         Intent intent = getIntent();
 
@@ -61,6 +66,12 @@ public class BreweryDetailActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
+
+        Toast.makeText(BreweryDetailActivity.this, "thanks for rating", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
