@@ -14,20 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp"/>
 
-    <
-
-    <
-
-    <
-
-    <
-
-    <
-
-    <
-
-    < HEAD
-    =======
     <!--Stars rating-->
     <RatingBar
         android:id="@+id/ratingBar"

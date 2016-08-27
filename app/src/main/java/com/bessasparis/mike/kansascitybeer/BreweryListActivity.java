@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2016  Michael J. Bessasparis
+ */
+
 package com.bessasparis.mike.kansascitybeer;
 
 import android.content.Context;
