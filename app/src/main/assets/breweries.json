@@ -2,107 +2,133 @@
   "breweries": [
     {
       "name": "Amerisports",
-      "address": "3200 North Ameristar Drive"
+      "address": "3200 North Ameristar Drive",
+      "website": "www.usda.gov"
     },
     {
       "name": "Big Rip Brewing",
-      "address": "216 East Ninth Avenue"
+      "address": "216 East Ninth Avenue",
+      "website": "www.usda.gov"
     },
     {
       "name": "Blind Tiger Brewery",
-      "address": "417 Southwest 37th Street, Topeka"
+      "address": "417 Southwest 37th Street, Topeka",
+      "website": "www.usda.gov"
     },
     {
       "name": "Border Brewing",
-      "address": "406 East 18th Street"
+      "address": "406 East 18th Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "Boulevard Brewing",
-      "address": "2534 Madison Street"
+      "address": "2534 Madison Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "Brewery Emperial",
-      "address": "1829 Oak Street"
+      "address": "1829 Oak Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "Calibration Brewery",
-      "address": "119 Armour Road, North Kansas City"
+      "address": "119 Armour Road, North Kansas City",
+      "website": "www.usda.gov"
     },
     {
       "name": "Cinder Block Brewery",
-      "address": "110 East 18th Avenue, North Kansas City"
+      "address": "110 East 18th Avenue, North Kansas City",
+      "website": "www.usda.gov"
     },
     {
       "name": "Crane Brewing",
-      "address": "6515 Railroad, Raytown"
+      "address": "6515 Railroad, Raytown",
+      "website": "www.usda.gov"
     },
     {
       "name": "Double Shift Brewing",
-      "address": "412 East 18th Street"
+      "address": "412 East 18th Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "Free State Brewing",
-      "address": "636 Massachusetts, Lawrence"
+      "address": "636 Massachusetts, Lawrence",
+      "website": "www.usda.gov"
     },
     {
       "name": "Green Room Burgers and Beer",
-      "address": "4010 Pennsylvania"
+      "address": "4010 Pennsylvania",
+      "website": "www.usda.gov"
     },
     {
       "name": "KC Bier",
-      "address": "310 West 79th Street"
+      "address": "310 West 79th Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "Martin City Brewing",
-      "address": "410 East 135th Street"
+      "address": "410 East 135th Street",
+      "website": "www.usda.gov"
     },
     {
       "name": "McCoy's Public House",
-      "address": "4057 Pennsylvania"
+      "address": "4057 Pennsylvania",
+      "website": "www.usda.gov"
     },
     {
       "name": "Red Crow Brewing",
-      "address": "20561 South Lone Elm Road, Spring Hill"
+      "address": "20561 South Lone Elm Road, Spring Hill",
+      "website": "www.usda.gov"
     },
     {
       "name": "Rock and Run Brewery",
-      "address": "114 East Kansas Street, Liberty"
+      "address": "114 East Kansas Street, Liberty",
+      "website": "www.usda.gov"
     },
     {
       "name": "Stockyards Brewing",
-      "address": "1600 Genesee"
+      "address": "1600 Genesee",
+      "website": "www.usda.gov"
     },
     {
       "name": "Tallgrass Brewing",
-      "address": "5960 Dry Hop Circle, Manhatten"
+      "address": "5960 Dry Hop Circle, Manhatten",
+      "website": "www.usda.gov"
     },
     {
       "name": "Torn Label Brewing",
-      "address": "1708 Campbell"
+      "address": "1708 Campbell",
+      "website": "www.usda.gov"
     },
     {
       "name": "23rd Street Brewery",
-      "address": "3512 Clinton Parkway, Lawrence"
+      "address": "3512 Clinton Parkway, Lawrence",
+      "website": "www.usda.gov"
     },
     {
       "name": "Weston Brewing",
-      "address": "500 Welt Street, Weston"
+      "address": "500 Welt Street, Weston",
+      "website": "www.usda.gov"
     },
     {
       "name": "Brew Lab",
-      "address": "8004 Foster Street, Overland Park"
+      "address": "8004 Foster Street, Overland Park",
+      "website": "www.usda.gov"
     },
     {
       "name": "Colony Espresso and Beer",
-      "address": "312 Armour Road, North Kansas City"
+      "address": "312 Armour Road, North Kansas City",
+      "website": "www.usda.gov"
     },
     {
       "name": "Loose Cannon Brewing",
-      "address": "Coming Soon"
+      "address": "Coming Soon",
+      "website": "www.usda.gov"
     },
     {
       "name": "Strange Days Brewing",
-      "address": "Coming Soon"
+      "address": "Coming Soon",
+      "website": "www.usda.gov"
     }
   ]
 }
