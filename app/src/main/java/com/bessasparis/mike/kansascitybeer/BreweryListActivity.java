@@ -7,12 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,10 +66,20 @@ public class BreweryListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_about:
+                displayAboutBox();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void displayAboutBox() {
+
+        Toast toast = Toast.makeText(BreweryListActivity.this,
+                "v0.1.0, by mikeb", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+        toast.show();
+
     }
 
     private void setupJsonObject() {
