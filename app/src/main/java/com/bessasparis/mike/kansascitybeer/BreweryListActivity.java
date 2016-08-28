@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -42,7 +41,7 @@ public class BreweryListActivity extends AppCompatActivity {
     public JSONObject jsonObj;
     public JSONArray breweryArray;
     public int numberOfBreweries = 0;
-    public BreweryData bdata; //JSON formatted all brewery data
+    public BreweryData bdata = new BreweryData(); //JSON formatted all brewery data
     private String breweries_file = "breweries.json";
 
     @Override
@@ -58,12 +57,6 @@ public class BreweryListActivity extends AppCompatActivity {
         assert breweriesListView != null;
 
         setupRecyclerView((RecyclerView) breweriesListView);
-
-        bdata = new BreweryData();
-        String s = bdata.getBreweryAttribute("website", 1);
-
-        Toast.makeText(this.getBaseContext(), "Toast:" + s, Toast.LENGTH_LONG).show();
-
     }
 
     @Override
@@ -121,15 +114,6 @@ public class BreweryListActivity extends AppCompatActivity {
         return json;
     }
 
-    public String getBreweryName(int i) throws JSONException {
-        String breweryName;
-
-        JSONObject breweryObj = breweryArray.getJSONObject(i);
-        breweryName = breweryObj.getString("name");
-        return breweryName;
-    }
-
-
     private void setupRecyclerView(@NonNull RecyclerView myRecyclerView) {
         myRecyclerView.setAdapter(new myAdapter());
     }
@@ -146,11 +130,7 @@ public class BreweryListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            try {
-                holder.mContentView.setText(getBreweryName(position));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            holder.mContentView.setText(bdata.getBreweryAttribute("name", position));
 
             //on a click send the detail activity the brewery JSON object as a string
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +153,7 @@ public class BreweryListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return (numberOfBreweries);
+            return (bdata.size);
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
