@@ -22,7 +22,6 @@ import org.json.JSONObject;
  */
 public class BreweryDetailActivity extends AppCompatActivity implements RatingBar.OnRatingBarChangeListener {
 
-    public static final String ARG_OBJ = "json-obj-string";
     public JSONObject bObj;
     public RatingBar ratingBar;
 
@@ -40,7 +39,7 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
         //create a brewery object out of the arg string
         //and set the activity text
         try {
-            bObj = new JSONObject(intent.getStringExtra(BreweryListActivity.ARG_OBJ));
+            bObj = new JSONObject(intent.getStringExtra("brewery-object"));
             ((TextView) findViewById(R.id.brewery_detail_address)).
                     setText(getBreweryAddress(bObj));
         } catch (Exception e) {

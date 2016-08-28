@@ -20,12 +20,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
  * An activity representing a list of Breweries. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -36,13 +30,7 @@ import java.io.InputStream;
  */
 public class BreweryListActivity extends AppCompatActivity {
 
-    public static final String ARG_OBJ = "json-obj-string";
-    public String jsonString;
-    public JSONObject jsonObj;
-    public JSONArray breweryArray;
-    public int numberOfBreweries = 0;
     public BreweryData bdata = new BreweryData(); //JSON formatted all brewery data
-    private String breweries_file = "breweries.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +38,6 @@ public class BreweryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_brewery_list);
         Toolbar myToolBar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolBar);
-
-        setupJsonObject();
 
         View breweriesListView = findViewById(R.id.brewery_list);
         assert breweriesListView != null;
@@ -82,36 +68,6 @@ public class BreweryListActivity extends AppCompatActivity {
                 "v0.1.0, by mikeb", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
         toast.show();
-
-    }
-
-    //read JSON string into a JSON array of breweries
-    private void setupJsonObject() {
-        try {
-            jsonString = loadJSONFromAsset();
-            jsonObj = new JSONObject(jsonString);
-            breweryArray = jsonObj.getJSONArray("breweries");
-            numberOfBreweries = breweryArray.length();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //read JSON string from file
-    public String loadJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = getAssets().open(breweries_file);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView myRecyclerView) {
@@ -136,17 +92,11 @@ public class BreweryListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                        Context context = v.getContext();
-                        Intent intent = new Intent(context, BreweryDetailActivity.class);
-
-                        try {
-                            intent.putExtra(ARG_OBJ,
-                                    breweryArray.getJSONObject(holder.getAdapterPosition()).toString());
-                            context.startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, BreweryDetailActivity.class);
+                    intent.putExtra("brewery-object",
+                            bdata.getBreweryObject(holder.getAdapterPosition()).toString());
+                    context.startActivity(intent);
                 }
             });
         }

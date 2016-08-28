@@ -70,8 +70,14 @@ public class BreweryData {
 
 
     //return a specified BreweryObject
-    public void getBreweryObject() {
-
+    public JSONObject getBreweryObject(int i) {
+        JSONObject breweryObject = null;
+        try {
+            breweryObject = breweryArray.getJSONObject(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (breweryObject);
     }
 
     //return a specified attribute of a specified breweryObject
