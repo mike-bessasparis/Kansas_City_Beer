@@ -60,10 +60,13 @@ public class BreweryData {
     }
 
     //return a specified attribute of a specified breweryObject
-    public String getBreweryAttribute(String reqAttribute, int indexBrewery) {
-
-        String mAttribute = "dummyAttribute";
-        return (mAttribute);
+    public String getBreweryAttribute(String reqAttribute, int i) {
+        String a = "dummy";
+        try {
+            a = breweryArray.getJSONObject(i).getString(reqAttribute);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (a);
     }
-
 }
