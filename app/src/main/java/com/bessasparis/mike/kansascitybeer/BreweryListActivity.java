@@ -44,6 +44,7 @@ public class BreweryListActivity extends AppCompatActivity {
     public int numberOfBreweries = 0;
     private String breweries_file = "breweries.json";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,10 @@ public class BreweryListActivity extends AppCompatActivity {
         assert breweriesListView != null;
 
         setupRecyclerView((RecyclerView) breweriesListView);
+
+        BreweryData bdata = new BreweryData();
+
+        Toast.makeText(this.getBaseContext(), "Toast", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -86,6 +91,7 @@ public class BreweryListActivity extends AppCompatActivity {
 
     }
 
+    //read JSON string into a JSON array of breweries
     private void setupJsonObject() {
         try {
             jsonString = loadJSONFromAsset();
@@ -97,6 +103,7 @@ public class BreweryListActivity extends AppCompatActivity {
         }
     }
 
+    //read JSON string from file
     public String loadJSONFromAsset() {
         String json = null;
         try {
