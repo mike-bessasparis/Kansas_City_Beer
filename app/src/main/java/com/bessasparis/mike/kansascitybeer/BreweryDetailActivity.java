@@ -14,15 +14,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * An activity representing a single Brewery detail screen.
  */
 public class BreweryDetailActivity extends AppCompatActivity implements RatingBar.OnRatingBarChangeListener {
 
-    public JSONObject bObj;
+    public Brewery bObj;
     public RatingBar ratingBar;
 
 
@@ -35,63 +32,33 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
         ratingBar.setOnRatingBarChangeListener(this);
 
         Intent intent = getIntent();
+        bObj = new Brewery(intent.getStringExtra("brewery-object"));
 
-        //create a brewery object out of the arg string
-        //and set the activity text
-        try {
-            bObj = new JSONObject(intent.getStringExtra("brewery-object"));
-            ((TextView) findViewById(R.id.brewery_detail_address)).
-                    setText(getBreweryAddress(bObj));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        ((TextView) findViewById(R.id.brewery_detail_name)).
+                setText(bObj.name);
 
-    // receives a string representing the JSON object of the brewery
-    // returns the address attribute as a string
-    public String getBreweryAddress(JSONObject mObj) throws JSONException {
-        String breweryAddress;
-        breweryAddress = mObj.getString("address");
-        return breweryAddress;
-    }
+        ((TextView) findViewById(R.id.brewery_detail_address)).
+                setText(bObj.address);
 
-    // receives a string representing the JSON object of the brewery
-    // returns the address attribute as a string
-    public String getBreweryWebSite(JSONObject mObj) throws JSONException {
-        String breweryWebSite;
-        breweryWebSite = mObj.getString("website");
-        return breweryWebSite;
     }
 
     //on a click send the map activity the brewery JSON object as a string
     public void mapButtonClicked(View v) {
-
-        try {
-            Intent searchAddress = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("geo:0,0?q=" + getBreweryAddress(bObj)));
-            startActivity(searchAddress);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Intent searchAddress = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("geo:0,0?q=" + bObj.name + " " + bObj.address));
+        startActivity(searchAddress);
     }
 
     //go to www site button
     public void websiteButtonClicked(View v) {
-
-        try {
-            Intent openWebsite = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://" + getBreweryWebSite(bObj)));
-            startActivity(openWebsite);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Intent openWebsite = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://" + bObj.website));
+        startActivity(openWebsite);
     }
 
 
     public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
-
         Toast.makeText(BreweryDetailActivity.this, "thanks for rating", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override

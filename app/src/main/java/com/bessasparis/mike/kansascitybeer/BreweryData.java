@@ -30,7 +30,7 @@ public class BreweryData {
     //read JSON string into a JSON array of breweries
     private void setupJsonObject() {
         try {
-            jsonString = loadJSONFromAsset();
+            jsonString = loadJSON();
             jsonObj = new JSONObject(jsonString);
             breweryArray = jsonObj.getJSONArray("breweries");
             size = breweryArray.length();
@@ -39,8 +39,8 @@ public class BreweryData {
         }
     }
 
-    //read JSON string from file
-    private String loadJSONFromAsset() {
+    //initialize JSON string
+    private String loadJSON() {
         String json = "{breweries: [" +
                 "{'name':'Amerisports', 'address':'3200 North Ameristar Drive', 'website':'www.ameristar.com/kansas-city/amerisports'}," +
                 "{'name':'Big Rip Brewing', 'address':'216 East Ninth Avenue', 'website':'bigripbrewing.com'}," +
