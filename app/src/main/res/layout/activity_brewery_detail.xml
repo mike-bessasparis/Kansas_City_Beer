@@ -23,12 +23,25 @@
         android:numStars="3"
         android:stepSize="1"/>
 
-    >>>>>>> a7af615... rating bar is interactive
-    <Button
-        android:id="@+id/btn_map_it"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="mapButtonClicked"
-        android:text="Map It"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/brewery_www_site"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="websiteButtonClicked"
+            android:text="Go to website"/>
+
+        <Button
+            android:id="@+id/btn_map_it"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="mapButtonClicked"
+            android:text="Map It"/>
+    </LinearLayout>
 
 </LinearLayout>

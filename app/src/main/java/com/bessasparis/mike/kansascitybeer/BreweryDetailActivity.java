@@ -56,6 +56,14 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
         return breweryAddress;
     }
 
+    // receives a string representing the JSON object of the brewery
+    // returns the address attribute as a string
+    public String getBreweryWebSite(JSONObject mObj) throws JSONException {
+        String breweryWebSite;
+        breweryWebSite = mObj.getString("website");
+        return breweryWebSite;
+    }
+
     //on a click send the map activity the brewery JSON object as a string
     public void mapButtonClicked(View v) {
 
@@ -67,6 +75,19 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
             e.printStackTrace();
         }
     }
+
+    //go to www site button
+    public void websiteButtonClicked(View v) {
+
+        try {
+            Intent openWebsite = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://" + getBreweryWebSite(bObj)));
+            startActivity(openWebsite);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
 
