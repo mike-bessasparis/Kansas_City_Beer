@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016  Michael J. Bessasparis
+  -->
+
 <android.support.v7.widget.RecyclerView android:id="@+id/brewery_list"
                                         android:name="com.bessasparis.mike.kansascitybeer.BreweryListFragment"
                                         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,6 +12,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
+                                        android:layout_marginTop="?attr/actionBarSize"
                                         app:layoutManager="LinearLayoutManager"
                                         tools:context="com.bessasparis.mike.kansascitybeer.BreweryListActivity"
                                         tools:listitem="@layout/brewery_list_content"/>
