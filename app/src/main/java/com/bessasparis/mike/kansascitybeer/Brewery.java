@@ -14,6 +14,7 @@ public class Brewery {
     public String name;
     public String address;
     public String website;
+    public Float rating;
 
 
     //constructor
@@ -25,6 +26,7 @@ public class Brewery {
             name = getBreweryName(bObj);
             address = getBreweryAddress(bObj);
             website = getBreweryWebSite(bObj);
+            rating = getBreweryRating(bObj);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,6 +57,14 @@ public class Brewery {
         String breweryWebSite;
         breweryWebSite = mObj.getString("website");
         return breweryWebSite;
+    }
+
+    // receives a string representing the JSON object of the brewery
+    // returns the rating attribute as a float
+    private Float getBreweryRating(JSONObject mObj) throws JSONException {
+        float breweryRating;
+        breweryRating = Float.parseFloat(mObj.getString("rating"));
+        return breweryRating;
     }
 
 

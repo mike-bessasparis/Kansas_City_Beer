@@ -22,23 +22,23 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
     public Brewery bObj;
     public RatingBar ratingBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brewery_detail);
 
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        ratingBar.setOnRatingBarChangeListener(this);
 
         Intent intent = getIntent();
         bObj = new Brewery(intent.getStringExtra("brewery-object"));
 
         ((TextView) findViewById(R.id.brewery_detail_name)).
                 setText(bObj.name);
-
         ((TextView) findViewById(R.id.brewery_detail_address)).
                 setText(bObj.address);
+
+        ratingBar.setRating(bObj.rating);
+        ratingBar.setOnRatingBarChangeListener(this);
 
     }
 

@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2016  Michael J. Bessasparis
+  -->
+
 <resources>
 
     <!-- Base application theme. -->
@@ -16,5 +20,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
 
 </resources>

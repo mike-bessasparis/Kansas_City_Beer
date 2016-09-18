@@ -69,6 +69,8 @@ public class BreweryListActivity extends AppCompatActivity {
         myRecyclerView.setAdapter(new myAdapter());
     }
 
+
+    //TODO - show rating in brewery list
     public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
 
         @Override
@@ -81,7 +83,13 @@ public class BreweryListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
+//            float mRtg;
+
             holder.mContentView.setText(bdata.getBreweryAttribute("name", position));
+//            holder.mRating.setRating(Float.parseFloat(bdata.getBreweryAttribute("rating", position)));
+
+//            mRtg = Float.parseFloat(bdata.getBreweryAttribute("rating", position));
+
 
             //on a click send the detail activity the brewery JSON object as a string
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -104,11 +112,13 @@ public class BreweryListActivity extends AppCompatActivity {
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mContentView;
+//            public final RatingBar mRating;
 
             public ViewHolder(View v) {
                 super(v);
                 mView = v;
                 mContentView = (TextView) v.findViewById(R.id.content);
+//                mRating = (RatingBar) v.findViewById(R.id.rating);
             }
 
             @Override

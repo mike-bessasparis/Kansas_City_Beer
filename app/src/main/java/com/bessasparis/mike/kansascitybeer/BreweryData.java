@@ -53,7 +53,7 @@ public class BreweryData {
                 "{'name':'Double Shift Brewing', 'address':'412 East 18th Street', 'website':'doubleshiftbrewing.com', 'rating':'0'}," +
                 "{'name':'Free State Brewing', 'address':'636 Massachusetts, Lawrence', 'website':'freestatebrewing.com', 'rating':'0'}," +
                 "{'name':'Green Room Burgers and Beer','address': '4010 Pennsylvania', 'website':'greenroomkc.com', 'rating':'0'}," +
-                "{'name':'KC Bier', 'address':'310 West 79th Street', 'website':'kcbier.com', 'rating':'0'}," +
+                "{'name':'KC Bier', 'address':'310 West 79th Street', 'website':'kcbier.com', 'rating':'3'}," +
                 "{'name':'Martin City Brewing', 'address':'410 East 135th Street', 'website':'martincitybrewingcompany.com', 'rating':'0'}," +
                 "{'name':'McCoys Public House', 'address':'4057 Pennsylvania', 'website':'mccoyskc.com', 'rating':'0'}," +
                 "{'name':'Red Crow Brewing', 'address':'20561 South Lone Elm Road, Spring Hill', 'website':'redcrowbrew.com', 'rating':'0'}," +
@@ -80,7 +80,7 @@ public class BreweryData {
         return (breweryObject);
     }
 
-    //return a specified attribute of a specified breweryObject
+    //return a specified attribute of a specified breweryObject as a string
     public String getBreweryAttribute(String reqAttribute, int i) {
         String a = "dummy";
         try {
