@@ -60,7 +60,7 @@ public class BreweryListActivity extends AppCompatActivity {
     public void displayAboutBox() {
 
         Toast toast = Toast.makeText(BreweryListActivity.this,
-                "v0.1.0, by mikeb", Toast.LENGTH_LONG);
+                "v0.2.0, by mikeb", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
         toast.show();
     }
