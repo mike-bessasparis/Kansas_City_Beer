@@ -22,35 +22,43 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
     public Brewery bObj;
     public RatingBar ratingBar;
 
+    private int i;
+    private BreweryList mBreweryList = new BreweryList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brewery_detail);
 
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-
         Intent intent = getIntent();
-        bObj = new Brewery(intent.getStringExtra("brewery-object"));
+        i = intent.getIntExtra("brewery-index", 0);
+        bObj = getBreweryObject(i);
 
         ((TextView) findViewById(R.id.brewery_detail_name)).
                 setText(bObj.name);
         ((TextView) findViewById(R.id.brewery_detail_address)).
                 setText(bObj.address);
 
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.setRating(bObj.rating);
         ratingBar.setOnRatingBarChangeListener(this);
-
     }
 
-    //on a click send the map activity the brewery JSON object as a string
+
+    private Brewery getBreweryObject(int i) {
+        return (mBreweryList.getBrewery(i));
+    }
+
+
+    //on a click send the map activity the brewery name
     public void mapButtonClicked(View v) {
         Intent searchAddress = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("geo:0,0?q=" + bObj.name + " " + bObj.address));
         startActivity(searchAddress);
     }
 
-    //go to www site button
+    //go to www site button send browser the URL
     public void websiteButtonClicked(View v) {
         Intent openWebsite = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://" + bObj.website));

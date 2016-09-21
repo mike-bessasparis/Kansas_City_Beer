@@ -25,7 +25,7 @@ import android.widget.Toast;
  */
 public class BreweryListActivity extends AppCompatActivity {
 
-    public BreweryList bdata = new BreweryList(); //JSON formatted all brewery data
+    public BreweryList mBreweryList = new BreweryList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +83,15 @@ public class BreweryListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            holder.mNameView.setText(bdata.getBreweryAttribute("name", position));
-            holder.mVisited.setText("Not Yet");
+            holder.mNameView.setText(mBreweryList.getBreweryName(position));
 
-            //on a click send the detail activity the brewery JSON object as a string
+            //on a click send the detail activity the position clicked
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, BreweryDetailActivity.class);
-                    intent.putExtra("brewery-object",
-                            bdata.getBreweryObject(holder.getAdapterPosition()).toString());
+                    intent.putExtra("brewery-index", holder.getAdapterPosition());
                     context.startActivity(intent);
                 }
             });
@@ -101,7 +99,7 @@ public class BreweryListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return (bdata.size);
+            return (mBreweryList.getSize());
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
@@ -118,8 +116,6 @@ public class BreweryListActivity extends AppCompatActivity {
 
             @Override
             public String toString() {
-//                return super.toString() + " '" + mNameView.getText() + "'";
-//                return super.toString() + "BreweryListItem";
                 return getClass().getName() + '@' + Integer.toHexString(hashCode());
             }
         }

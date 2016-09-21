@@ -28,8 +28,8 @@ public class BreweryList {
         buildBreweryList();
     }
 
+    //Build brewery list array from JSON array
     private void buildBreweryList() {
-
         for (int i = 0; i < NUMBER_OF_BREWERIES; i++) {
             try {
                 newBreweryArray[i] = new Brewery(breweryArray.getJSONObject(i).toString());
@@ -37,8 +37,28 @@ public class BreweryList {
                 e.printStackTrace();
             }
         }
-
     }
+
+    //get brewery name of object at index i
+    public String getBreweryName(int i) {
+        return (newBreweryArray[i].name);
+    }
+
+    //get brewery array size
+    public int getSize() {
+        return (NUMBER_OF_BREWERIES);
+    }
+
+    //get brewery object at index i
+    public Brewery getBrewery(int i) {
+        return (newBreweryArray[i]);
+    }
+
+
+    //TODO get index of brewery with specified name
+
+    //TODO update brewery rating
+
 
     //read JSON string into a JSON array of breweries
     private void setupJsonObject() {
