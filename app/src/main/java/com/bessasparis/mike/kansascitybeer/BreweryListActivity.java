@@ -25,7 +25,7 @@ import android.widget.Toast;
  */
 public class BreweryListActivity extends AppCompatActivity {
 
-    public BreweryData bdata = new BreweryData(); //JSON formatted all brewery data
+    public BreweryList bdata = new BreweryList(); //JSON formatted all brewery data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class BreweryListActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(BreweryListActivity.this,
                 "v0.2.0, by mikeb", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
@@ -83,13 +83,8 @@ public class BreweryListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-//            float mRtg;
-
-            holder.mContentView.setText(bdata.getBreweryAttribute("name", position));
-//            holder.mRating.setRating(Float.parseFloat(bdata.getBreweryAttribute("rating", position)));
-
-//            mRtg = Float.parseFloat(bdata.getBreweryAttribute("rating", position));
-
+            holder.mNameView.setText(bdata.getBreweryAttribute("name", position));
+            holder.mVisited.setText("Not Yet");
 
             //on a click send the detail activity the brewery JSON object as a string
             holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -111,19 +106,21 @@ public class BreweryListActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mContentView;
-//            public final RatingBar mRating;
+            public final TextView mNameView;
+            public final TextView mVisited;
 
             public ViewHolder(View v) {
                 super(v);
                 mView = v;
-                mContentView = (TextView) v.findViewById(R.id.content);
-//                mRating = (RatingBar) v.findViewById(R.id.rating);
+                mNameView = (TextView) v.findViewById(R.id.name);
+                mVisited = (TextView) v.findViewById(R.id.visited);
             }
 
             @Override
             public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
+//                return super.toString() + " '" + mNameView.getText() + "'";
+//                return super.toString() + "BreweryListItem";
+                return getClass().getName() + '@' + Integer.toHexString(hashCode());
             }
         }
     }

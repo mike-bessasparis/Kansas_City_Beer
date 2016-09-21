@@ -22,6 +22,7 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
     public Brewery bObj;
     public RatingBar ratingBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
 
     public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
         Toast.makeText(BreweryDetailActivity.this, "thanks for rating", Toast.LENGTH_SHORT).show();
+        bObj.setBreweryRating(rating);
     }
 
     @Override

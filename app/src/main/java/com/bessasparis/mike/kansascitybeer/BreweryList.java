@@ -7,28 +7,43 @@ package com.bessasparis.mike.kansascitybeer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+
 /**
  * Created by mike on 8/28/2016.
  * <p/>
  * Handles the data.  The data is stored as a JSON object.
  */
-public class BreweryData {
+public class BreweryList {
     public int size;
-    private String jsonString;
-    private JSONObject jsonObj;
-    private JSONArray breweryArray;
-    private String breweries_file = "breweries.json";
+    private int NUMBER_OF_BREWERIES = 21;
 
+    //TODO maybe this is more elegant as an ArrayList
+    private Brewery newBreweryArray[] = new Brewery[NUMBER_OF_BREWERIES];
+
+    private JSONArray breweryArray;
 
     //constructor
-    public BreweryData() {
-
+    public BreweryList() {
         setupJsonObject();
+        buildBreweryList();
+    }
+
+    private void buildBreweryList() {
+
+        for (int i = 0; i < NUMBER_OF_BREWERIES; i++) {
+            try {
+                newBreweryArray[i] = new Brewery(breweryArray.getJSONObject(i).toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
     //read JSON string into a JSON array of breweries
     private void setupJsonObject() {
+        String jsonString;
+        JSONObject jsonObj;
         try {
             jsonString = loadJSON();
             jsonObj = new JSONObject(jsonString);
@@ -39,7 +54,7 @@ public class BreweryData {
         }
     }
 
-    //initialize JSON string
+    //get JSON string from storage
     private String loadJSON() {
         String json = "{breweries: [" +
                 "{'name':'Amerisports', 'address':'3200 North Ameristar Drive', 'website':'www.ameristar.com/kansas-city/amerisports', 'rating':'0'}," +
@@ -69,7 +84,7 @@ public class BreweryData {
     }
 
 
-    //return a specified BreweryObject
+    //return a specified brewery at index i as a JSON object
     public JSONObject getBreweryObject(int i) {
         JSONObject breweryObject = null;
         try {
@@ -90,4 +105,30 @@ public class BreweryData {
         }
         return (a);
     }
+
+
+    //TODO find the array index of a specified Brewery
+    public int getBreweryIndex(String bName) {
+        int i = 0;
+        try {
+            while (breweryArray.getJSONObject(i).getString("name") != bName) {
+                ++i;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (i);
+    }
+
+
+    //TODO save the JSON string
+    public int saveBreweryData(String b) {
+        return (1);
+    }
+
+    //TODO read the JSON string
+    public String readBreweryData() {
+        return ("1");
+    }
+
 }

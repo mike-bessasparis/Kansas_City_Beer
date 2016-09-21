@@ -16,8 +16,9 @@ public class Brewery {
     public String website;
     public Float rating;
 
-
+    //TODO make this not use JSON, just pass in the attributes as arguments
     //constructor
+    //receive a Brewery object represented as a JSON string
     public Brewery(String s) {
         JSONObject bObj = null;
 
@@ -31,8 +32,15 @@ public class Brewery {
             e.printStackTrace();
         }
 
-
     }
+
+
+    //set the rating attribute of a specified Brewery
+    //return 1 if success, 0 otherwise
+    public void setBreweryRating(float r) {
+        rating = r;
+    }
+
 
     // receives a string representing the JSON object of the brewery
     // returns the name attribute as a string
