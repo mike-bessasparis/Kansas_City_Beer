@@ -68,7 +68,7 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
 
     public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
         Toast.makeText(BreweryDetailActivity.this, "thanks for rating", Toast.LENGTH_SHORT).show();
-        bObj.setBreweryRating(rating);
+        bObj.rating = rating;
     }
 
     @Override

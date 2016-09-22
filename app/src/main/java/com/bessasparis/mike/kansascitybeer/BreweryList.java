@@ -14,7 +14,7 @@ import org.json.JSONObject;
  * Handles the data.  The data is stored as a JSON object.
  */
 public class BreweryList {
-    public int size;
+
     private int NUMBER_OF_BREWERIES = 21;
 
     //TODO maybe this is more elegant as an ArrayList
@@ -24,19 +24,22 @@ public class BreweryList {
 
     //constructor
     public BreweryList() {
-        setupJsonObject();
         buildBreweryList();
     }
 
     //Build brewery list array from JSON array
     private void buildBreweryList() {
+
+        setupJsonObject();
+
         for (int i = 0; i < NUMBER_OF_BREWERIES; i++) {
-            try {
-                newBreweryArray[i] = new Brewery(breweryArray.getJSONObject(i).toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            newBreweryArray[i] = new Brewery();
+            newBreweryArray[i].name = getBreweryAttribute("name", i);
+            newBreweryArray[i].address = getBreweryAttribute("address", i);
+            newBreweryArray[i].website = getBreweryAttribute("website", i);
+            newBreweryArray[i].rating = Float.parseFloat(getBreweryAttribute("rating", i));
         }
+
     }
 
     //get brewery name of object at index i
@@ -68,7 +71,6 @@ public class BreweryList {
             jsonString = loadJSON();
             jsonObj = new JSONObject(jsonString);
             breweryArray = jsonObj.getJSONArray("breweries");
-            size = breweryArray.length();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,18 +105,18 @@ public class BreweryList {
         return json;
     }
 
-
-    //return a specified brewery at index i as a JSON object
-    public JSONObject getBreweryObject(int i) {
-        JSONObject breweryObject = null;
-        try {
-            breweryObject = breweryArray.getJSONObject(i);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return (breweryObject);
-    }
-
+    //
+//    //return a specified brewery at index i as a JSON object
+//    public JSONObject getBreweryObject(int i) {
+//        JSONObject breweryObject = null;
+//        try {
+//            breweryObject = breweryArray.getJSONObject(i);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return (breweryObject);
+//    }
+//
     //return a specified attribute of a specified breweryObject as a string
     public String getBreweryAttribute(String reqAttribute, int i) {
         String a = "dummy";
@@ -124,20 +126,6 @@ public class BreweryList {
             e.printStackTrace();
         }
         return (a);
-    }
-
-
-    //TODO find the array index of a specified Brewery
-    public int getBreweryIndex(String bName) {
-        int i = 0;
-        try {
-            while (breweryArray.getJSONObject(i).getString("name") != bName) {
-                ++i;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return (i);
     }
 
 
