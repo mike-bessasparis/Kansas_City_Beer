@@ -22,14 +22,15 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
     public Brewery bObj;
     public RatingBar ratingBar;
 
-    private int i;
     private BreweryList mBreweryList = new BreweryList();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int i;
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brewery_detail);
+        setContentView(R.layout.fragment_brewery_detail);
 
         Intent intent = getIntent();
         i = intent.getIntExtra("brewery-index", 0);
@@ -65,11 +66,22 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
         startActivity(openWebsite);
     }
 
-
     public void onRatingChanged(RatingBar rBar, float rating, boolean fromUser) {
         Toast.makeText(BreweryDetailActivity.this, "thanks for rating", Toast.LENGTH_SHORT).show();
         bObj.rating = rating;
     }
+
+    public void visitedButtonClicked(View v) {
+        Toast.makeText(BreweryDetailActivity.this, "Prost", Toast.LENGTH_SHORT).show();
+        bObj.visited = true;
+    }
+
+    public void notVisitedButtonClicked(View v) {
+        Toast.makeText(BreweryDetailActivity.this, "Maybe next week", Toast.LENGTH_SHORT).show();
+        bObj.visited = false;
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,7 +93,7 @@ public class BreweryDetailActivity extends AppCompatActivity implements RatingBa
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, BreweryListActivity.class));
+//            navigateUpTo(new Intent(this, BreweryListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

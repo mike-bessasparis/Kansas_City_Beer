@@ -8,61 +8,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * An activity representing a list of Breweries.
  */
-public class BreweryListActivity extends AppCompatActivity {
+public class BreweryListFragment extends Fragment {
 
     public BreweryList mBreweryList = new BreweryList();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brewery_list);
-        Toolbar myToolBar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolBar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_brewery_list, container, false);
 
-        View breweriesListView = findViewById(R.id.brewery_list);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        View breweriesListView = getView().findViewById(R.id.brewery_list);
         assert breweriesListView != null;
-
         setupRecyclerView((RecyclerView) breweriesListView);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.brewery_list_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_about:
-                displayAboutBox();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void displayAboutBox() {
-
-        Toast toast = Toast.makeText(BreweryListActivity.this,
-                "v0.2.0, by mikeb", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
     }
 
     private void setupRecyclerView(@NonNull RecyclerView myRecyclerView) {
@@ -84,6 +55,7 @@ public class BreweryListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
             holder.mNameView.setText(mBreweryList.getBreweryName(position));
+            holder.mVisited.setText(mBreweryList.getVisited(position));
 
             //on a click send the detail activity the position clicked
             holder.mView.setOnClickListener(new View.OnClickListener() {
