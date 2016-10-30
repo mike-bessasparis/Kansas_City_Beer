@@ -63,6 +63,27 @@ public class BreweryList {
         return (breweryArray[i].name);
     }
 
+    //get brewery address of object at index i
+    public String getBreweryAddress(int i) {
+        return (breweryArray[i].address);
+    }
+
+    //get brewery website of object at index i
+    public String getBreweryWebSite(int i) {
+        return (breweryArray[i].website);
+    }
+
+    //set brewery visited
+    public void setBreweryVisited(int i) {
+        breweryArray[i].visited = true;
+    }
+
+    //set brewery not visited
+    public void setBreweryNotVisited(int i) {
+        breweryArray[i].visited = false;
+    }
+
+
     public String getVisited(int i) {
         if (breweryArray[i].visited == true) {
             return ("Been here.");
@@ -129,18 +150,6 @@ public class BreweryList {
         return json;
     }
 
-    //
-//    //return a specified brewery at index i as a JSON object
-//    public JSONObject getBreweryObject(int i) {
-//        JSONObject breweryObject = null;
-//        try {
-//            breweryObject = JSONbreweryArray.getJSONObject(i);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return (breweryObject);
-//    }
-//
     //return a specified attribute of a specified breweryObject as a string
     public String getBreweryAttribute(String reqAttribute, int i) {
         String a = "dummy";

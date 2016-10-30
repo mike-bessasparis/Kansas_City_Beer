@@ -5,7 +5,6 @@
 package com.bessasparis.mike.kansascitybeer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,12 +14,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import static com.bessasparis.mike.kansascitybeer.MainActivity.mBreweryList;
+
 /**
  * An activity representing a list of Breweries.
  */
 public class BreweryListFragment extends Fragment {
 
-    public BreweryList mBreweryList = new BreweryList();
+    final static String ARG_POSITION = "brewery_index";
+
+    OnBrewerySelectedListener mCallback;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnBrewerySelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " HEY, must implement OnBrewerySelectedListener");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +57,13 @@ public class BreweryListFragment extends Fragment {
         myRecyclerView.setAdapter(new myAdapter());
     }
 
+    // The container Activity must implement this interface so the frag can deliver messages
+    public interface OnBrewerySelectedListener {
+        /**
+         * Called by BreweryListFragment when a list item is selected
+         */
+        public void onBrewerySelected(int position);
+    }
 
     //TODO - show rating in brewery list
     public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder> {
@@ -61,10 +85,8 @@ public class BreweryListFragment extends Fragment {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, BreweryDetailActivity.class);
-                    intent.putExtra("brewery-index", holder.getAdapterPosition());
-                    context.startActivity(intent);
+                    // Notify the parent activity of selected item
+                    mCallback.onBrewerySelected(holder.getAdapterPosition());
                 }
             });
         }

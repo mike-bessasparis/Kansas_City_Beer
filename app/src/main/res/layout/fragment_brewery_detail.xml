@@ -42,11 +42,10 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/brewery_www_site"
+            android:id="@+id/btn_www_site"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="websiteButtonClicked"
             android:text="Go to website"/>
 
         <Button
@@ -54,7 +53,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="mapButtonClicked"
             android:text="Map It"/>
     </LinearLayout>
 
@@ -67,7 +65,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="visitedButtonClicked"
             android:text="Yes, I was here"/>
 
         <Button
@@ -75,7 +72,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="notVisitedButtonClicked"
             android:text="Nope, never been"/>
 
     </LinearLayout>
